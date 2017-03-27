@@ -103,19 +103,16 @@ Custom property | Description
       __onCancel: function(e) {
         // console.log('canceled', e);
         this.fire('toast-cancel');
-      },
-
-      /**
-       * Triggered when the paper-toast is tapped.
-       *
-       * @event toast-tap
-       */
-      /**
-       * Triggered when the paper-toast is canceled via clicking the
-       * cancel button or by being swiped.
-       *
-       * @event toast-cancel
-       */
+      }
     });
+    /**
+     * Fired when the paper-toast is tapped.
+     * @event toast-tap
+     */
+    /**
+     * Fired when the paper-toast is canceled via clicking the
+     * cancel button or by being swiped.
+     * @event toast-cancel
+     */
   </script>
 </dom-module>
