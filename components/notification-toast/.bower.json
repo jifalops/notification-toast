@@ -1,0 +1,28 @@
+{
+  "name": "notification-toast",
+  "description": "An app-toast (paper-toast) wrapper for simulating web notifications.",
+  "main": "notification-toast.html",
+  "dependencies": {
+    "polymer": "Polymer/polymer#^1.4.0",
+    "paper-toast": "^1.3.0",
+    "iron-icon": "^1.0.12",
+    "app-toast": "^0.2.2"
+  },
+  "devDependencies": {
+    "iron-component-page": "PolymerElements/iron-component-page#^1.0.0",
+    "iron-demo-helpers": "PolymerElements/iron-demo-helpers#^1.0.0",
+    "web-component-tester": "^4.0.0",
+    "webcomponentsjs": "webcomponents/webcomponentsjs#^0.7.0"
+  },
+  "homepage": "https://github.com/jifalops/notification-toast",
+  "_release": "504ea902ea",
+  "_resolution": {
+    "type": "branch",
+    "branch": "master",
+    "commit": "504ea902ea2cd878ac6e3aee6086a15d0a046b14"
+  },
+  "_source": "https://github.com/jifalops/notification-toast.git",
+  "_target": "master",
+  "_originalSource": "jifalops/notification-toast",
+  "_direct": true
+}

@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+
+    <title>notification-toast demo</title>
+
+    <script src="../../webcomponentsjs/webcomponents-lite.js"></script>
+
+    <link rel="import" href="../../iron-demo-helpers/demo-pages-shared-styles.html">
+    <link rel="import" href="../../iron-demo-helpers/demo-snippet.html">
+    <link rel="import" href="../notification-toast.html">
+
+    <style is="custom-style" include="demo-pages-shared-styles">
+    </style>
+  </head>
+  <body>
+    <div class="vertical-section-container centered">
+      <h3>Basic notification-toast demo</h3>
+      <demo-snippet>
+        <template>
+          <notification-toast id="toast"></notification-toast>
+          <input id="title" placeholder="title" value="Title"/><br/>
+          <input id="body" placeholder="body" value="body"/><br/>
+          <input id="icon" placeholder="icon" value="monkey.jpg"/><br/>
+          <button onclick="show()">Show</button>&nbsp;
+          <button onclick="toast.close()">Close</button><br/>
+          Last Event: <span id="feedback"></span>
+          <script>
+            var toast = document.getElementById('toast');
+            var title = document.getElementById('title');
+            var body = document.getElementById('body');
+            var icon = document.getElementById('icon');
+            toast.addEventListener('toast-tap', function() { feedback.innerText = 'on-toast-tap'; });
+            toast.addEventListener('toast-cancel', function() { feedback.innerText = 'on-toast-cancel'; });
+            function show() {
+              toast.show({
+                notificationTitle: title.value,
+                body: body.value,
+                icon: icon.value
+              });
+            }
+          </script>
+        </template>
+      </demo-snippet>
+    </div>
+  </body>
+</html>

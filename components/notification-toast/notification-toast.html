@@ -1,0 +1,118 @@
+<link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="../app-toast/app-toast.html">
+
+<!--
+`notification-toast`
+An app-toast (paper-toast) wrapper for simulating web notifications.
+
+Custom property | Description
+----------------|-------------
+`--notification-toast-icon-height` | Height of the icon.
+`--notification-toast-icon-width` | Width of the icon.
+`--notification-toast-title` | Mixin applied to the title.
+`--notification-toast-body` | Mixin applied to the body.
+
+@demo demo/index.html
+-->
+
+<dom-module id="notification-toast">
+  <template>
+    <style>
+      :host {
+        display: block;
+      }
+      #toast {
+        --iron-icon-width: var(--notification-toast-icon-width, 56px);
+        --iron-icon-height: var(--notification-toast-icon-height, 56px);
+      }
+      .title {
+        font-weight: 500;
+        @apply --notification-toast-title;
+      }
+      .body {
+        font-weight: 400;
+        @apply --notification-toast-body;
+      }
+    </style>
+    <app-toast
+      id="toast"
+      src="[[icon]]"
+      show-cancel
+      disable-swipe
+      duration="10000"
+      on-toast-tap="__onTap"
+      on-toast-cancel="__onCancel">
+      <div class="title">[[notificationTitle]]</div>
+      <div class="body">[[body]]</div>
+    </app-toast>
+
+  </template>
+
+  <script>
+    Polymer({
+
+      is: 'notification-toast',
+
+      properties: {
+        /**
+         * The notification icon url.
+         */
+        icon: String,
+        /**
+         * The notification's title.
+         */
+        notificationTitle: String,
+        /**
+         * The notification's body.
+         */
+        body: String
+      },
+
+      /**
+       * Set the specified set of properties and show the toast.
+       * The properties object can contain properties of this element
+       * and the underlying app-toast and paper-toast.
+       */
+      show: function(properties) {
+        this._setProperties(properties);
+        this.$.toast.show(properties);
+      },
+
+      /**
+       * Close the notification programatically.
+       */
+      close: function() {
+        this.$.toast.close();
+      },
+
+      _setProperties: function(properties) {
+        if (properties) {
+          for (var property in properties) {
+            if (property in this && property.indexOf('_') != 0) {
+              this[property] = properties[property];
+              delete properties[property];
+            }
+          }
+        }
+      },
+
+      __onTap: function(e) {
+        // console.log('tapped', e);
+        this.fire('toast-tap');
+      },
+      __onCancel: function(e) {
+        // console.log('canceled', e);
+        this.fire('toast-cancel');
+      }
+    });
+    /**
+     * Fired when the paper-toast is tapped.
+     * @event toast-tap
+     */
+    /**
+     * Fired when the paper-toast is canceled via clicking the
+     * cancel button or by being swiped.
+     * @event toast-cancel
+     */
+  </script>
+</dom-module>
