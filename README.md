@@ -5,7 +5,8 @@ An app-toast (paper-toast) wrapper for simulating web notifications.
 
 ## Installation
 ```
-bower install --save notification-toast
+bower i -S notification-toast       # Polymer 2.0 hybrid (1.x compatible)
+bower i -S notification-toast#^0.1  # Polymer 1.x based
 ```
 
 ## Usage
@@ -18,7 +19,7 @@ bower install --save notification-toast
   <template>
     <script src="../webcomponentsjs/webcomponents-lite.js"></script>
     <link rel="import" href="notification-toast.html">
-    <next-code-block></next-code-block>  
+    <next-code-block></next-code-block>
     <script>
       var toast = document.getElementById('toast');
       var title = document.getElementById('title');
@@ -54,7 +55,6 @@ Full demo:
 | [github](https://jifalops.github.io/notification-toast/components/notification-toast/demo/).
 
 API: [webcomponents.org](https://www.webcomponents.org/element/jifalops/notification-toast/notification-toast)
-| [github](https://jifalops.github.io/notification-toast).
 
 ## Contributing
 

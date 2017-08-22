@@ -2,28 +2,24 @@
 <link rel="import" href="../app-toast/app-toast.html">
 
 <!--
-`notification-toast`
-An app-toast (paper-toast) wrapper for simulating web notifications.
-
-Custom property | Description
-----------------|-------------
-`--notification-toast-icon-height` | Height of the icon.
-`--notification-toast-icon-width` | Width of the icon.
-`--notification-toast-title` | Mixin applied to the title.
-`--notification-toast-body` | Mixin applied to the body.
-
-@demo demo/index.html
+CSS custom property | Description | Default
+------------------- | ----------- | -------
+`--notification-toast-icon-height` | Height of the icon. | 56px
+`--notification-toast-icon-width` | Width of the icon. | 56px
+`--notification-toast-title` | Mixin applied to the title. | {}
+`--notification-toast-body` | Mixin applied to the body. | {}
 -->
-
 <dom-module id="notification-toast">
-  <template>
+  <template strip-whitespace>
     <style>
       :host {
         display: block;
+        --notification-toast-icon-width: 56px;
+        --notification-toast-icon-height: 56px;
       }
       #toast {
-        --iron-icon-width: var(--notification-toast-icon-width, 56px);
-        --iron-icon-height: var(--notification-toast-icon-height, 56px);
+        --iron-icon-width: var(--notification-toast-icon-width);
+        --iron-icon-height: var(--notification-toast-icon-height);
       }
       .title {
         font-weight: 500;
@@ -49,6 +45,14 @@ Custom property | Description
   </template>
 
   <script>
+    /**
+     *`notification-toast`
+     * An app-toast (paper-toast) wrapper for simulating web notifications.
+     *
+     * @customElement
+     * @polymer
+     * @demo demo/index.html
+     */
     Polymer({
 
       is: 'notification-toast',
@@ -104,15 +108,17 @@ Custom property | Description
         // console.log('canceled', e);
         this.fire('toast-cancel');
       }
-    });
+
     /**
      * Fired when the paper-toast is tapped.
      * @event toast-tap
      */
+
     /**
      * Fired when the paper-toast is canceled via clicking the
      * cancel button or by being swiped.
      * @event toast-cancel
      */
+    });
   </script>
 </dom-module>
